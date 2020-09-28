@@ -34,23 +34,21 @@
 
 % Math
 \usepackage{amsmath}
+\usepackage{amssymb}
 \DeclareMathSymbol{*}{\mathbin}{symbols}{"01}
 
 % Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\if\useenglish0
-  \rfoot{Side \thepage{} af \pageref{LastPage}}
-\else
-  \rfoot{Page \thepage{} of \pageref{LastPage}}
-\fi
 
 % Title
 \if\useenglish0
-  \title{\titleda}
+  \newcommand{\maintitle}{\titleda}
 \else
-  \title{\titleen}
+  \newcommand{\maintitle}{\titleen}
 \fi
+
+\title{\maintitle}
 
 
 % hyperref
@@ -58,8 +56,8 @@
 \hypersetup{%
 	pdfpagelabels=true,
 	plainpages=false,%
-	pdfauthor={\authorlist},%
-	pdftitle={\titleen},%
+	pdfauthor={\authorcomma},%
+	pdftitle={\maintitle},%
 	pdfsubject={TODO},%
 	bookmarksnumbered=true,%
 	hidelinks,%
