@@ -44,11 +44,13 @@
 % Title
 \if\useenglish0
   \newcommand{\maintitle}{\titleda}
+  \newcommand{\mainsubtitle}{\subtitleda}
 \else
   \newcommand{\maintitle}{\titleen}
+  \newcommand{\mainsubtitle}{\subtitleen}
 \fi
 
-\title{\maintitle}
+\title{\maintitle\\\large\mainsubtitle}
 
 
 % hyperref
@@ -58,7 +60,7 @@
 	plainpages=false,%
 	pdfauthor={\authorcomma},%
 	pdftitle={\maintitle},%
-	pdfsubject={TODO},%
+	pdfsubject={\mainsubtitle},%
 	bookmarksnumbered=true,%
 	hidelinks,%
 	colorlinks=false,%
