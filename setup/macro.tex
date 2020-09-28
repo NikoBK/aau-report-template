@@ -1,0 +1,84 @@
+% Define built in chapters to respect danish/english setting
+
+\if\useenglish0
+  \newcommand{\prefacename}{Forord}
+  \newcommand{\introductionname}{Indledning}
+  \newcommand{\analysisname}{Problemanalyse}
+  \newcommand{\definitionname}{Problemformulering}
+\else
+  \newcommand{\prefacename}{Preface}
+  \newcommand{\introductionname}{Introduction}
+  \newcommand{\analysisname}{Problem analysis}
+  \newcommand{\definitionname}{Problem definition}
+\fi
+
+
+\newlength\mystoreparindent
+\newenvironment{noindentenv}{%
+\setlength{\mystoreparindent}{\the\parindent}
+\setlength{\parindent}{0pt}
+}{%
+\setlength{\parindent}{\mystoreparindent}
+}
+
+
+\newcommand{\titlepageda}{%
+  \begin{multicols}{2}
+    \includegraphics{figures/aau_logo_da}
+    \columnbreak\\
+      {\raggedleft
+      \textbf{\edunameda}\\
+      Aalborg Universitet\\
+      \href{https://www.aau.dk}{https://www.aau.dk}\\
+      }
+  \end{multicols}
+  \begin{multicols}{2}
+    \begin{noindentenv}
+      \textbf{Titel:}\\ \titleda\bigskip\par
+      \textbf{Semestertema:}\\ \semesterthemeda\bigskip\par
+      \textbf{Projektperiode:}\\ \projectperiodda\bigskip\par
+      \textbf{Projektgruppe:}\\ \projectgroup\bigskip\par
+      \textbf{Deltager(e):}\\ \authorlist\bigskip\par
+      \textbf{Vejleder(e):}\\ \supervisor\bigskip\par
+      \textbf{Oplagstal:}\\ \numcopies\bigskip\par
+      \textbf{Sidetal:}\\ \pageref{LastPage}\bigskip\par
+      \textbf{Afleveringsdato:}\\ \duedate
+    \end{noindentenv}
+    \columnbreak\\
+    \textbf{Synopse:}
+    \begin{mdframed}
+      \abstractda
+    \end{mdframed}
+  \end{multicols}
+}
+
+
+\newcommand{\titlepageen}{%
+  \begin{multicols}{2}
+    \includegraphics{figures/aau_logo_en}
+    \columnbreak\\
+      {\raggedleft
+      \textbf{\edunameen}\\
+      Aalborg University\\
+      \href{https://www.aau.dk}{https://www.aau.dk}\\
+      }
+  \end{multicols}
+  \begin{multicols}{2}
+    \begin{noindentenv}
+      \textbf{Title:}\\ \titleen\bigskip\par
+      \textbf{Semester theme:}\\ \semesterthemeen\bigskip\par
+      \textbf{Project period:}\\ \projectperioden\bigskip\par
+      \textbf{Project group:}\\ \projectgroup\bigskip\par
+      \textbf{Participant(s):}\\ \authorlist\bigskip\par
+      \textbf{Supervisor(s):}\\ \supervisor\bigskip\par
+      \textbf{Copies:}\\ \numcopies\bigskip\par
+      \textbf{Pages:}\\ \pageref{LastPage}\bigskip\par
+      \textbf{Due date:}\\ \duedate
+    \end{noindentenv}
+    \columnbreak\\
+    \textbf{Abstract:}
+    \begin{mdframed}
+      \abstracten
+    \end{mdframed}
+  \end{multicols}
+}

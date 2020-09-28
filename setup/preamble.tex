@@ -1,0 +1,80 @@
+% Set up the documentclass, packages and options
+
+\documentclass[a4paper]{report}
+
+% Apply user settings
+\input{setup/user.tex}
+
+% Set up encoding and font
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Set up language
+\usepackage{csquotes}
+\if\useenglish0
+  \usepackage[danish]{babel}
+\else
+  \usepackage[english]{babel}
+\fi
+
+% Color
+\usepackage{xcolor}
+
+% Graphics
+\usepackage{graphicx}
+
+% Bibliography
+\usepackage[bibencoding=utf8]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Refrence to last page
+\usepackage{lastpage}
+
+
+% Math
+\usepackage{amsmath}
+\DeclareMathSymbol{*}{\mathbin}{symbols}{"01}
+
+% Header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\if\useenglish0
+  \rfoot{Side \thepage{} af \pageref{LastPage}}
+\else
+  \rfoot{Page \thepage{} of \pageref{LastPage}}
+\fi
+
+% Title
+\if\useenglish0
+  \title{\titleda}
+\else
+  \title{\titleen}
+\fi
+
+
+% hyperref
+\usepackage{hyperref}
+\hypersetup{%
+	pdfpagelabels=true,
+	plainpages=false,%
+	pdfauthor={\authorlist},%
+	pdftitle={\titleen},%
+	pdfsubject={TODO},%
+	bookmarksnumbered=true,%
+	hidelinks,%
+	colorlinks=false,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=black,%
+	pdfstartview=FitH%
+}
+
+% Muticolumns
+\usepackage{multicol}
+
+% Nice box
+\usepackage{mdframed}
+
+
