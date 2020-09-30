@@ -16,6 +16,7 @@
   \newcommand{\solutionname}{Solution}
 \fi
 
+\newcommand{\neworrenewcommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
 
 \newlength\mystoreparindent
 \newenvironment{noindentenv}{%
@@ -29,64 +30,72 @@
 \newcommand{\tpentryl}[2]{\textbf{#1:}\\#2}
 
 \newcommand{\titlepageda}{%
-  \begin{multicols}{2}
-    \includegraphics{figures/AAU_STUDENTERRAPPORT_blue_rgb}
-    \columnbreak\\
-    {\raggedleft
-    \textbf{\edunameda}\\
-    Aalborg Universitet\\
-    \href{https://www.aau.dk}{https://www.aau.dk}\\
-    }
-  \end{multicols}
-  \begin{multicols}{2}
-    \begin{noindentenv}
-      \tpentry{Titel}{\titleda}
-      \tpentry{Semstertema}{\semesterthemeda}
-      \tpentry{Projektperiode}{\projectperiodda}
-      \tpentry{Projektgruppe}{\projectgroup}
-      \tpentry{Deltager(e)}{\authorlist}
-      \tpentry{Vejleder(e)}{\supervisorlist}
-      \tpentry{Oplagstal}{\numcopies}
-      \tpentry{Sidetal}{\pageref{LastPage}}
-      \tpentryl{Afleveringsdato}{\duedate}
-    \end{noindentenv}
-    \columnbreak\\
-    \textbf{Synopse:}
-    \begin{mdframed}
-      \input{sections/abstractda}
-    \end{mdframed}
-  \end{multicols}
+  \titlepaget%
+  {AAU_STUDENTERRAPPORT_blue_rgb}%
+  {\edunameda}%
+  {Aalborg Universitet}%
+  {Titel}{\titleda}%
+  {Semestertema}{\semesterthemeda}%
+  {Projektperiode}{\projectperioden}%
+  {Projektgruppe}%
+  {Deltager(e)}%
+  {Vejleder(e)}%
+  {Oplagstal}%
+  {Sidetal}%
+  {Afleveringsdato}%
+  {Synopse}%
+  {abstractda}%
 }
 
-
 \newcommand{\titlepageen}{%
-  \begin{multicols}{2}
-    \includegraphics{figures/AAU_UK_STUDENTREPORT_blue_rgb}
-    \columnbreak\\
-    {\raggedleft
-    \textbf{\edunameen}\\
-    Aalborg University\\
-    \href{https://www.aau.dk}{https://www.aau.dk}\\
-    }
-  \end{multicols}
-  \begin{multicols}{2}
-    \begin{noindentenv}
-      \tpentry{Title}{\titleen}
-      \tpentry{Semster theme}{\semesterthemeen}
-      \tpentry{Project period}{\projectperioden}
-      \tpentry{Project group}{\projectgroup}
-      \tpentry{Participant(s)}{\authorlist}
-      \tpentry{Supervisor(s)}{\supervisorlist}
-      \tpentry{Copies}{\numcopies}
-      \tpentry{Pages}{\pageref{LastPage}}
-      \tpentryl{Due date}{\duedate}
-    \end{noindentenv}
-    \columnbreak\\
-    \textbf{Abstract:}
-    \begin{mdframed}
-      \input{sections/abstracten}
-    \end{mdframed}
-  \end{multicols}
+  \titlepaget%
+  {AAU_UK_STUDENTREPORT_blue_rgb}%
+  {\edunameen}%
+  {Aalborg University}%
+  {Title}{\titleen}%
+  {Semester theme}{\semesterthemeen}%
+  {Project period}{\projectperioden}%
+  {Project group}%
+  {Participant(s)}%
+  {Supervisor(s)}%
+  {Copies}%
+  {Pages}%
+  {Due date}%
+  {Abstract}%
+  {abstracten}%
+}
+
+\newcommand{\titlepaget}[9]{%
+\neworrenewcommand{\titlepagett}[8]{%
+  \begin{multicols}{2}%
+    \includegraphics{figures/#1}% AAU logo
+    \columnbreak\\%
+    {\raggedleft%
+      \textbf{#2}\\% Education name
+      #3\\% AAU title
+      href{https://www.aau.dk}{https://www.aau.dk}\\%
+    }%
+  \end{multicols}%
+  \begin{multicols}{2}%
+    \begin{noindentenv}%
+      \tpentry{#4}{#5}% Title
+      \tpentry{#6}{#7}% Semester theme
+      \tpentry{#8}{#9}% Project period
+      \tpentry{##1}{\projectgroup}% Project group
+      \tpentry{##2}{\authorlist}% Participants
+      \tpentry{##3}{\supervisorlist}% Supervisors
+      \tpentry{##4}{\numcopies}% Copies
+      \tpentry{##5}{\pageref{LastPage}}% Pages
+      \tpentryl{##6}{\duedate}% Due date
+    \end{noindentenv}%
+    \columnbreak\\%
+    \textbf{##7:}% Abstract
+    \begin{mdframed}%
+      \input{sections/##8}% Abstract text
+    \end{mdframed}%
+  \end{multicols}%
+}%
+\titlepagett%
 }
 
 \newcommand{\signature}[2]{%
