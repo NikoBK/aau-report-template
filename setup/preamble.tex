@@ -1,5 +1,8 @@
 % Set up the documentclass, packages and options
 
+% Has to be set before documentclass to silence warning
+\PassOptionsToPackage{pdfpagelabels=true}{hyperref}
+
 % Set up document to use a4 and use the report document class
 \documentclass[a4paper]{report}
 
@@ -15,6 +18,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
+
+% Has to be loaded before csquotes
+\usepackage{fvextra}
 
 % Set up language
 \usepackage{csquotes}
@@ -82,7 +88,6 @@
 % This should be the last package to be included
 \usepackage{hyperref}
 \hypersetup{%
-  pdfpagelabels=true,%
   plainpages=false,%
   pdfauthor={\authorcomma},%
   pdftitle={\maintitle},%
