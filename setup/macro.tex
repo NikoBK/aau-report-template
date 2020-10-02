@@ -163,30 +163,33 @@
     \ifthenelse{\isodd{\signatureitemcnt{}}}%
       {%
         \edef\oldsignatureitem{\signatureitem}%
-	\edef\oldsignatureitemcnt{\signatureitemcnt}%
-	\IfStrEq{\signatureitem}{\authors[-1]}{%
-	  \begin{center}%
-	    \signature{\signatureitem}{\foreachitem\emailitem\in\emails{%
-	      \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
-	      }%
+        \edef\oldsignatureitemcnt{\signatureitemcnt}%
+        \IfStrEq{\signatureitem}{\authors[-1]}{%
+          \begin{center}%
+            \signature{\signatureitem}{%
+              \foreachitem\emailitem\in\emails{%
+                \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
+              }%
             }%
-	  \end{center}%
-	}{}%
+          \end{center}%
+        }{}%
       }%
       {%
         \begin{multicols}{2}%
-	  \centering%
-	  \signature{\oldsignatureitem}{\foreachitem\emailitem\in\emails{%
-	    \IfStrEq{\emailitemcnt{}}{\oldsignatureitemcnt{}}{\emaillink\emailitem}{}%
-	    }%
+          \centering%
+           \signature{\oldsignatureitem}{%
+            \foreachitem\emailitem\in\emails{%
+              \IfStrEq{\emailitemcnt{}}{\oldsignatureitemcnt{}}{\emaillink\emailitem}{}%
+            }%
           }%
-	  \columnbreak%
-	  \signature{\signatureitem}{\foreachitem\emailitem\in\emails{%
-	    \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
-	    }%
+          \columnbreak%
+          \signature{\signatureitem}{%
+            \foreachitem\emailitem\in\emails{%
+              \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
+            }%
           }%
         \end{multicols}%
-	\IfStrEq{\signatureitem}{\authors[-1]}{}{\vspace{1\baselineskip}}%
+        \IfStrEq{\signatureitem}{\authors[-1]}{}{\vspace{1\baselineskip}}%
       }%
   }%
 }
