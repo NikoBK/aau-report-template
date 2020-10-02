@@ -20,10 +20,10 @@
 
 \newlength\mystoreparindent
 \newenvironment{noindentenv}{%
-\setlength{\mystoreparindent}{\the\parindent}
-\setlength{\parindent}{0pt}
+  \setlength{\mystoreparindent}{\the\parindent}%
+  \setlength{\parindent}{0pt}%
 }{%
-\setlength{\parindent}{\mystoreparindent}
+  \setlength{\parindent}{\mystoreparindent}%
 }
 
 \newcommand{\tpentry}[2]{\textbf{#1:}\\#2\bigskip\par}
