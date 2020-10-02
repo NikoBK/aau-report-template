@@ -1,5 +1,4 @@
 % Define built in chapters to respect danish/english setting
-
 \if\useenglish0
   \newcommand{\prefacename}{Forord}
   \newcommand{\introductionname}{Indledning}
@@ -16,8 +15,10 @@
   \newcommand{\solutionname}{Solution}
 \fi
 
+% newcommand/renewcommand convenience function
 \newcommand{\neworrenewcommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
 
+% No indentation environment
 \newlength\mystoreparindent
 \newenvironment{noindentenv}{%
   \setlength{\mystoreparindent}{\the\parindent}%
@@ -26,9 +27,11 @@
   \setlength{\parindent}{\mystoreparindent}%
 }
 
+% Titlepage entry macros
 \newcommand{\tpentry}[2]{\textbf{#1:}\\#2\bigskip\par}
 \newcommand{\tpentryl}[2]{\textbf{#1:}\\#2}
 
+% The danish titlepage
 \newcommand{\titlepageda}{%
   \titlepaget%
   {AAU_STUDENTERRAPPORT_blue_rgb}%
@@ -47,6 +50,7 @@
   {abstractda}%
 }
 
+% The english titlepage
 \newcommand{\titlepageen}{%
   \titlepaget%
   {AAU_UK_STUDENTREPORT_blue_rgb}%
@@ -65,6 +69,7 @@
   {abstracten}%
 }
 
+% Titlepage template
 \newcommand{\titlepaget}[9]{%
 \neworrenewcommand{\titlepagett}[8]{%
   \begin{multicols}{2}%
@@ -98,20 +103,25 @@
 \titlepagett%
 }
 
+% Clickable email
 \newcommand{\emaillink}[1]{\href{mailto:#1}{#1}}
 
+% Preface signature macro
 \newcommand{\signature}[2]{%
   \rule{\linewidth}{0.5pt}\\%
   #1\\%
   {\footnotesize <#2>}\\%
 }
 
+% Generate a list of authors
 \newcommand{\authorlist}{%
   \foreachitem\authoritem\in\authors{%
     \IfStrEq{\authoritem}{\authors[-1]}{\authoritem}{\authoritem\\}%
   }%
 }
 
+% Generate a comma seperated list of authors
+% For use in hyperref setup
 \def\authorcomma{}
 \newcommand\authoradd[1]{\edef\authorcomma{\authorcomma{}#1}}
 \foreachitem\authoritem\in\authors{%
@@ -122,6 +132,8 @@
   }%
 }
 
+% Generate \maketitle \author list of authors
+% Needs this special magic to work
 \newcommand\authorn{}
 \foreachitem\authoritem\in\authors{%
   \IfStrEq{\authoritem}{\authors[-1]}{%
@@ -137,14 +149,14 @@
 
 \author{\authorn}
 
-
+% Generate a list of supervisors
 \newcommand{\supervisorlist}{%
   \foreachitem\supervisoritem\in\supervisors{%
     \IfStrEq{\supervisoritem}{\supervisors[-1]}{\supervisoritem}{\supervisoritem\\}%
   }%
 }
 
-
+% Generate the list of signatures on preface.tex
 \newcommand{\signaturelist}{%
   \vspace{3\baselineskip}%
   \foreachitem\signatureitem\in\authors{%
