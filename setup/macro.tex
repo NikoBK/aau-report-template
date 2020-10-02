@@ -122,6 +122,21 @@
   }%
 }
 
+\newcommand\authorn{}
+\foreachitem\authoritem\in\authors{%
+  \IfStrEq{\authoritem}{\authors[-1]}{%
+    \edef\authorn{\authorn\authoritem}%
+  }{%
+    \edef\authorn{\authorn\authoritem{}XXX}%
+  }%
+}
+
+\foreachitem\authoritem\in\authors{%
+  \patchcmd{\authorn}{XXX}{\and}{}{}%
+}
+
+\author{\authorn}
+
 
 \newcommand{\supervisorlist}{%
   \foreachitem\supervisoritem\in\supervisors{%
@@ -131,6 +146,7 @@
 
 
 \newcommand{\signaturelist}{%
+  \vspace{3\baselineskip}%
   \foreachitem\signatureitem\in\authors{%
     \ifthenelse{\isodd{\signatureitemcnt{}}}%
       {%
