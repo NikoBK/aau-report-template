@@ -3,9 +3,13 @@
 
 \begin{document}
 % Formal stuff like the frontpage and titlepage
+\pagestyle{empty}
 \include{sections/frontpage}
 \include{sections/titlepage}
+\pdfbookmark[0]{\contentsname}{label:contents}
 \tableofcontents
+\clearpage
+\pagestyle{fancy}
 %
 % Content
 \include{sections/preface}
