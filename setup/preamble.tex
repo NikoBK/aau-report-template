@@ -36,6 +36,9 @@
 % Graphics
 \usepackage{graphicx}
 
+% Float used for figure[H]
+\usepackage{float}
+
 % Bibliography
 \usepackage[bibencoding=utf8]{biblatex}
 \addbibresource{bibliography.bib}
@@ -69,6 +72,13 @@
 
 % Code highlighting
 \usepackage{minted}
+
+% Todo list
+\if\useenglish0
+  \usepackage[danish, colorinlistoftodos]{todonotes}
+\else
+  \usepackage[english, colorinlistoftodos]{todonotes}
+\fi
 
 
 % Title
