@@ -112,6 +112,21 @@
   }%
 }
 
+\def\authorcomma{}
+%\def\and{}
+%\newcommand\authoradd[1]{\expandafter\def\expandafter\authorstring\expandafter{\authorstring { }#1}}
+\newcommand\authoradd[1]{\edef\authorcomma{\authorcomma{}#1}}
+\foreachitem\authoritem\in\authors{%
+  \IfStrEq{\authoritem}{\authors[-1]}{%
+    \authoradd{\authoritem}%
+  }{%
+    \authoradd{\authoritem, }%
+  }%
+}
+
+%\author{\authorstring}
+
+
 \newcommand{\supervisorlist}{%
   \foreachitem\supervisoritem\in\supervisors{%
     \IfStrEq{\supervisoritem}{\supervisors[-1]}{\supervisoritem}{\supervisoritem\\}%
