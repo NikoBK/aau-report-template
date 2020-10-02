@@ -10,78 +10,63 @@
 \date{\today}
 
 % Authors
-\newcommand{\authorA}{Author 1}
-\newcommand{\authorB}{Author 2}
-\newcommand{\authorC}{Author 3}
-\newcommand{\authorD}{Author 4}
-\newcommand{\authorE}{Author 5}
-\newcommand{\authorF}{Author 6}
-\newcommand{\authorG}{Author 7}
-\newcommand{\authorH}{Author 8}
+\setsepchar{,}
+\readlist\authors{%
+  Author 1,%
+  Author 2,%
+  Author 3,%
+  Author 4,%
+  Author 5,%
+  Author 6,%
+  Author 7,%
+  Author 8%
+}
 
 % Author emails
-\newcommand{\emailA}{usernr@student.aau.dk}
-\newcommand{\emailB}{usernr@student.aau.dk}
-\newcommand{\emailC}{usernr@student.aau.dk}
-\newcommand{\emailD}{usernr@student.aau.dk}
-\newcommand{\emailE}{usernr@student.aau.dk}
-\newcommand{\emailF}{usernr@student.aau.dk}
-\newcommand{\emailG}{usernr@student.aau.dk}
-\newcommand{\emailH}{usernr@student.aau.dk}
+\setsepchar{,}
+\readlist\emails{%
+  user1@student.aau.dk,%
+  user2@student.aau.dk,%
+  user3@student.aau.dk,%
+  user4@student.aau.dk,%
+  user5@student.aau.dk,%
+  user6@student.aau.dk,%
+  user7@student.aau.dk,%
+  user8@student.aau.dk%
+}
+
 
 % Change this to match the amount of authors you have
 \author{%
-  \authorA\and%
-  \authorB\and%
-  \authorC\and%
-  \authorD\and%
-  \authorE\and%
-  \authorF\and%
-  \authorG\and%
-  \authorH%
+  \authors[1]\and%
+  \authors[2]\and%
+  \authors[3]\and%
+  \authors[4]\and%
+  \authors[5]\and%
+  \authors[6]\and%
+  \authors[7]\and%
+  \authors[8]%
 }
+
 
 % Change this to match the amount of authors you have
 \newcommand{\authorcomma}{%
-  \authorA,\ %
-  \authorB,\ %
-  \authorC,\ %
-  \authorD,\ %
-  \authorE,\ %
-  \authorF,\ %
-  \authorG\ \&\ %
-  \authorH%
+  \authors[1],\ %
+  \authors[2],\ %
+  \authors[3],\ %
+  \authors[4],\ %
+  \authors[5],\ %
+  \authors[6],\ %
+  \authors[7]\ \&\ %
+  \authors[8]%
 }
 
-% Change this to match the amount of authors you have
-\newcommand{\authorlist}{%
-  \authorA\\%
-  \authorB\\%
-  \authorC\\%
-  \authorD\\%
-  \authorE\\%
-  \authorF\\%
-  \authorG\\%
-  \authorH%
-}
 
-% Change this to match the amount of authors you have
-\newcommand{\emaillinkA}{\href{mailto:\emailA}{\emailA}}
-\newcommand{\emaillinkB}{\href{mailto:\emailB}{\emailB}}
-\newcommand{\emaillinkC}{\href{mailto:\emailC}{\emailC}}
-\newcommand{\emaillinkD}{\href{mailto:\emailD}{\emailD}}
-\newcommand{\emaillinkE}{\href{mailto:\emailE}{\emailE}}
-\newcommand{\emaillinkF}{\href{mailto:\emailF}{\emailF}}
-\newcommand{\emaillinkG}{\href{mailto:\emailG}{\emailG}}
-\newcommand{\emaillinkH}{\href{mailto:\emailH}{\emailH}}
-
-% Define supervisors. Change this to match the amount of supervisors you have
-\newcommand{\supervisorA}{Supervisor 1}
-\newcommand{\supervisorB}{Supervisor 2}
-
-\newcommand{\supervisorlist}{%
-  \supervisorA\\%
-  \supervisorB%
+% Define supervisors.
+\setsepchar{,}
+\readlist\supervisors{%
+  Supervisor 1,%
+  Supervisor 2%
 }
 
 
@@ -103,7 +88,6 @@
 \newcommand{\numcopies}{1}
 
 \newcommand{\duedate}{\today}
-
 
 \newcommand{\edunameda}{Software}
 \newcommand{\edunameen}{Software}

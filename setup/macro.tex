@@ -98,8 +98,56 @@
 \titlepagett%
 }
 
+\newcommand{\emaillink}[1]{\href{mailto:#1}{#1}}
+
 \newcommand{\signature}[2]{%
-  \rule{\linewidth}{0.5pt}\\
-  #1\\
-  {\footnotesize <#2>}\\
+  \rule{\linewidth}{0.5pt}\\%
+  #1\\%
+  {\footnotesize <#2>}\\%
+}
+
+\newcommand{\authorlist}{%
+  \foreachitem\authoritem\in\authors{%
+    \IfStrEq{\authoritem}{\authors[-1]}{\authoritem}{\authoritem\\}%
+  }%
+}
+
+\newcommand{\supervisorlist}{%
+  \foreachitem\supervisoritem\in\supervisors{%
+    \IfStrEq{\supervisoritem}{\supervisors[-1]}{\supervisoritem}{\supervisoritem\\}%
+  }%
+}
+
+
+\newcommand{\signaturelist}{%
+  \foreachitem\signatureitem\in\authors{%
+    \ifthenelse{\isodd{\signatureitemcnt{}}}%
+      {%
+        \edef\oldsignatureitem{\signatureitem}%
+	\edef\oldsignatureitemcnt{\signatureitemcnt}%
+	\IfStrEq{\signatureitem}{\authors[-1]}{%
+	  \begin{center}%
+	    \signature{\signatureitem}{\foreachitem\emailitem\in\emails{%
+	      \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
+	      }%
+            }%
+	  \end{center}%
+	}{}%
+      }%
+      {%
+        \begin{multicols}{2}%
+	  \centering%
+	  \signature{\oldsignatureitem}{\foreachitem\emailitem\in\emails{%
+	    \IfStrEq{\emailitemcnt{}}{\oldsignatureitemcnt{}}{\emaillink\emailitem}{}%
+	    }%
+          }%
+	  \columnbreak%
+	  \signature{\signatureitem}{\foreachitem\emailitem\in\emails{%
+	    \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
+	    }%
+          }%
+        \end{multicols}%
+	\IfStrEq{\signatureitem}{\authors[-1]}{}{\vspace{1\baselineskip}}%
+      }%
+  }%
 }
