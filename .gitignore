@@ -6,6 +6,7 @@
 *.fls
 *.out
 *.run.xml
+*.tdo
 *.toc
 *.log
 master.pdf
