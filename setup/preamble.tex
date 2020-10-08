@@ -1,11 +1,16 @@
 % Set up the documentclass, packages and options
 
+\input{setup/user2.tex}
+
 % Has to be set before documentclass to silence warning
 \PassOptionsToPackage{pdfpagelabels=true}{hyperref}
 
 % Set up document to use a4 and use the report document class
-\documentclass[a4paper]{report}
-
+\if\final0
+  \documentclass[a4paper]{report}
+\else
+  \documentclass[a4paper, final]{report}
+\fi
 % Lists (this is where the fun begins)
 \usepackage{xstring}
 \usepackage{listofitems}
