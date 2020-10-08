@@ -134,22 +134,8 @@
   }%
 }
 
-% Generate \maketitle \author list of authors
-% Needs this special magic to work
-\newcommand\authorn{}
-\foreachitem\authoritem\in\authors{%
-  \IfStrEq{\authoritem}{\authors[-1]}{%
-    \edef\authorn{\authorn\authoritem}%
-  }{%
-    \edef\authorn{\authorn\authoritem{}XXX}%
-  }%
-}
 
-\foreachitem\authoritem\in\authors{%
-  \patchcmd{\authorn}{XXX}{\and}{}{}%
-}
-
-\author{\authorn}
+\author{\projectgroup}
 
 % Generate a list of supervisors
 \newcommand{\supervisorlist}{%
