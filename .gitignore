@@ -10,6 +10,8 @@
 *.toc
 *.log
 master.pdf
+master.synctex.gz
+
 
 *-converted-to.pdf
 _minted-master/
