@@ -11,6 +11,10 @@
 \else
   \documentclass[a4paper, final]{report}
 \fi
+
+% subsubsections should have a number
+\setcounter{secnumdepth}{3}
+
 % Lists (this is where the fun begins)
 \usepackage{xstring}
 \usepackage{listofitems}
@@ -85,10 +89,12 @@
 \usepackage[final, babel]{microtype}
 
 % Todo list
-\if\useenglish0
-  \usepackage[danish, colorinlistoftodos]{todonotes}
-\else
-  \usepackage[english, colorinlistoftodos]{todonotes}
+\if\final0
+  \if\useenglish0
+    \usepackage[danish, colorinlistoftodos]{todonotes}
+  \else
+    \usepackage[english, colorinlistoftodos]{todonotes}
+  \fi
 \fi
 
 

@@ -6,7 +6,7 @@
   \newcommand{\definitionname}{Problemafgrænsning}
   \newcommand{\formulationname}{Problemformulering}
   \newcommand{\solutionname}{Løsning}
-  \newcommand{\listingname}{Kode uddrag}
+  \newcommand{\listingname}{Kodeuddrag}
 \else
   \newcommand{\prefacename}{Preface}
   \newcommand{\introductionname}{Introduction}
@@ -182,11 +182,20 @@
   }%
 }
 
-
-\newcommand{\critical}[1]{\todo[color=red]{#1}}
-\newcommand{\changeme}[1]{\todo[color=red!40]{#1}}
-\newcommand{\unsure}[1]{\todo[color=orange!40]{#1}}
-\newcommand{\info}[1]{\todo[color=blue!40]{#1}}
-\newcommand{\nitpick}[1]{\todo[color=gray!40, size=\small{}]{#1}}
-\newcommand{\missingref}[1]{\todo[color=green!40]{#1}}
-
+\if\final0
+  \newcommand{\critical}[1]{\todo[color=red]{#1}}
+  \newcommand{\changeme}[1]{\todo[color=red!40]{#1}}
+  \newcommand{\unsure}[1]{\todo[color=orange!40]{#1}}
+  \newcommand{\info}[1]{\todo[color=blue!40]{#1}}
+  \newcommand{\nitpick}[1]{\todo[color=gray!40, size=\small{}]{#1}}
+  \newcommand{\missingref}[1]{\todo[color=green!40]{#1}}
+\else
+  \newcommand{\critical}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\changeme}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\unsure}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\info}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\nitpick}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\missingref}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\todo}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\missingfigure}[1]{\PackageError{aau-report-template}{You have a missing figure}{Delete/fix your figure}}
+\fi
