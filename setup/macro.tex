@@ -142,8 +142,18 @@
   }%
 }
 
+% Generate a list of authors
+\newcommand{\authorsfrontpage}{}
+\foreachitem\authoritem\in\authors{%
+  \IfStrEq{\authoritem}{\authors[-1]}{
+    \eappto{\authorsfrontpage}{\authoritem}%
+  }{%
+    \eappto{\authorsfrontpage}{\authoritem}%
+    \appto{\authorsfrontpage}{\and}%
+  }%
+}
 
-\author{\projectgroup}
+\author{\authorsfrontpage}
 
 % Generate a list of supervisors
 \newcommand{\supervisorlist}{%
@@ -151,6 +161,7 @@
     \IfStrEq{\supervisoritem}{\supervisors[-1]}{\supervisoritem}{\supervisoritem\\}%
   }%
 }
+
 
 % Generate the list of signatures on preface.tex
 \newcommand{\signaturelist}{%
