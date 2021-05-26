@@ -1,6 +1,7 @@
 % Set up the documentclass, packages and options
 
-\input{setup/user2.tex}
+% Set up user settings
+\input{setup/user.tex}
 
 % Has to be set before documentclass to silence warning
 \PassOptionsToPackage{pdfpagelabels=true}{hyperref}
@@ -20,9 +21,6 @@
 \usepackage{listofitems}
 
 
-% Apply user settings
-\input{setup/user.tex}
-
 % Set up encoding and font
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -39,6 +37,9 @@
   \usepackage[english]{babel}
 \fi
 
+% Geometry
+\usepackage{geometry}
+
 % Color
 \usepackage{xcolor}
 
@@ -52,8 +53,8 @@
 \usepackage[bibencoding=utf8]{biblatex}
 \addbibresource{bibliography.bib}
 
-% Refrence to last page
-\usepackage{lastpage}
+% Select section style
+\usepackage{titlesec}
 
 % Math
 \usepackage{amsmath}
@@ -102,9 +103,11 @@
 \if\useenglish0
   \newcommand{\maintitle}{\titleda}
   \newcommand{\mainsubtitle}{\subtitleda}
+  \newcommand{\mainsubject}{\subjectda}
 \else
   \newcommand{\maintitle}{\titleen}
   \newcommand{\mainsubtitle}{\subtitleen}
+  \newcommand{\mainsubject}{\subjecten}
 \fi
 
 \title{\maintitle\\\large\mainsubtitle}
@@ -120,8 +123,8 @@
 \hypersetup{%
   plainpages=false,%
   pdfauthor={\authorcomma},%
-  pdftitle={\maintitle},%
-  pdfsubject={\mainsubtitle},%
+  pdftitle={\maintitle{}: \mainsubtitle},%
+  pdfsubject={\mainsubject},%
   bookmarksnumbered=true,%
   breaklinks,%
   hidelinks,%
@@ -133,3 +136,6 @@
   pdfstartview=FitH%
 }
 
+% Uncomment for no paragraph indentation and more space between paragraphs
+%\setlength{\parindent}{0}
+%\setlength{\parskip}{4mm}

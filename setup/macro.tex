@@ -20,6 +20,14 @@
 % newcommand/renewcommand convenience function
 \newcommand{\neworrenewcommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
 
+% Set up lists
+\setsepchar{,}
+\readlist\authors{\authors}
+\readlist\emails{\emails}
+\readlist\supervisors{\supervisors}
+
+
+
 % No indentation environment
 \newlength\mystoreparindent
 \newenvironment{noindentenv}{%
@@ -40,7 +48,7 @@
   {\edunameda}%
   {Aalborg Universitet}%
   {Titel}{\titleda}%
-  {Semestertema}{\semesterthemeda}%
+  {Emne}{\subjectda}%
   {Projektperiode}{\projectperioden}%
   {Projektgruppe}%
   {Deltager(e)}%
@@ -59,7 +67,7 @@
   {\edunameen}%
   {Aalborg University}%
   {Title}{\titleen}%
-  {Semester theme}{\semesterthemeen}%
+  {Emne}{\subjecten}%
   {Project period}{\projectperioden}%
   {Project group}%
   {Participant(s)}%
@@ -92,7 +100,7 @@
       \tpentry{##2}{\authorlist}% Participants
       \tpentry{##3}{\supervisorlist}% Supervisors
       \tpentry{##4}{\numcopies}% Copies
-      \tpentry{##5}{\pageref{LastPage}}% Pages
+      \tpentry{##5}{\pageref{lastpage}}% Pages
       \tpentryl{##6}{\duedate}% Due date
     \end{noindentenv}%
     \columnbreak\\%

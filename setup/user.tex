@@ -1,3 +1,5 @@
+% Change this to 1 before you compile your final report
+\def\final{0}
 
 % If 0 the document uses danish language, if 1 the document uses english
 \def\useenglish{0}
@@ -10,8 +12,7 @@
 \date{\today}
 
 % Authors
-\setsepchar{,}
-\readlist\authors{%
+\newcommand{\authors}{%
   Author 1,%
   Author 2,%
   Author 3,%
@@ -23,8 +24,7 @@
 }
 
 % Author emails
-\setsepchar{,}
-\readlist\emails{%
+\newcommand{\emails}{%
   user1@student.aau.dk,%
   user2@student.aau.dk,%
   user3@student.aau.dk,%
@@ -36,12 +36,11 @@
 }
 
 
-% Define supervisors.
-\setsepchar{,}
-\readlist\supervisors{%
+\newcommand{\supervisors}{%
   Supervisor 1,%
   Supervisor 2%
 }
+
 
 
 % Document properties
@@ -56,9 +55,9 @@
 \newcommand{\subtitleen}{English subtitle}
 
 
-% Semester theme
-\newcommand{\semesterthemeda}{Indsæt semester tema her}
-\newcommand{\semesterthemeen}{Insert semester theme here}
+% Subject
+\newcommand{\subjectda}{Dansk emne}
+\newcommand{\subjecten}{English subject}
 
 
 % Project period

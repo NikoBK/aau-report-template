@@ -5,6 +5,7 @@
 \pagestyle{empty}
 \include{sections/frontpage}
 \include{sections/titlepage}
+\include{sections/preface}
 \pdfbookmark[0]{\contentsname}{label:contents}
 \tableofcontents
 \clearpage
@@ -16,7 +17,6 @@
 \fi
 %
 % Content
-\include{sections/preface}
 \include{sections/introduction}
 \include{sections/analysis}
 \include{sections/definition}
@@ -24,4 +24,13 @@
 \include{sections/solution}
 %
 \printbibliography[heading=bibintoc]
+%
+% Appendix
+\label{lastpage}
+\pagestyle{empty}
+\assignpagestyle{\chapter}{empty}
+\appendix
+\addcontentsline{toc}{chapter}{\appendixname}
+%
+\include{appendix/appendix_1}
 \end{document}
