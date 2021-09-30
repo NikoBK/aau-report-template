@@ -130,14 +130,26 @@
   }%
 }
 
+% Replace æ,ø,å with ae,oe,aa as they are not supported in hyperref setup
+\newcommand\replacewithdigraph[1]{%
+  \patchcmd{#1}{æ}{ae}{}{}%
+  \patchcmd{#1}{ø}{oe}{}{}%
+  \patchcmd{#1}{å}{aa}{}{}%
+  \patchcmd{#1}{Æ}{Ae}{}{}%
+  \patchcmd{#1}{Ø}{Oe}{}{}%
+  \patchcmd{#1}{Å}{Aa}{}{}%
+}
+
 % Generate a comma seperated list of authors
 % For use in hyperref setup
 \def\authorcomma{}
 \newcommand\authoradd[1]{\edef\authorcomma{\authorcomma{}#1}}
 \foreachitem\authoritem\in\authors{%
   \IfStrEq{\authoritem}{\authors[-1]}{%
+    \replacewithdigraph{\authoritem}%
     \authoradd{\authoritem}%
   }{%
+    \replacewithdigraph{\authoritem}%
     \authoradd{\authoritem, }%
   }%
 }
