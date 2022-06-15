@@ -99,18 +99,8 @@
 \fi
 
 
-% Title
-\if\useenglish0
-  \newcommand{\maintitle}{\titleda}
-  \newcommand{\mainsubtitle}{\subtitleda}
-  \newcommand{\mainsubject}{\subjectda}
-\else
-  \newcommand{\maintitle}{\titleen}
-  \newcommand{\mainsubtitle}{\subtitleen}
-  \newcommand{\mainsubject}{\subjecten}
-\fi
 
-\title{\maintitle\\\large\mainsubtitle}
+\title{\maintitle\\\large\subtitle}
 
 \input{setup/macro}
 
@@ -123,10 +113,9 @@
 \hypersetup{%
   plainpages=false,%
   pdfauthor={\authorcomma},%
-  pdftitle={\maintitle{}: \mainsubtitle},%
-  pdfsubject={\mainsubject},%
+  pdftitle={\maintitle{}: \subtitle},%
+  pdfsubject={\subject},%
   pdflang={\langid},%
-  pdfnumcopies={\numcopies},%
   bookmarksnumbered=true,%
   breaklinks,%
   hidelinks,%
