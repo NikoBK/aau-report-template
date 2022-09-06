@@ -1,0 +1,202 @@
+% Define built in chapters to respect danish/english setting
+\newcommand{\prefacename}{Prefaceefd}
+\newcommand{\introductionname}{Introduction}
+\newcommand{\analysisname}{Problem analysis}
+\newcommand{\definitionname}{Definition of the problem}
+\newcommand{\formulationname}{Formulation of the problem}
+\newcommand{\codename}{Code}
+\newcommand{\listingname}{Code snippet}
+
+% newcommand/renewcommand convenience function
+\newcommand{\neworrenewcommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
+
+% Set up lists
+\setsepchar{,}
+\readlist\authors{\authors}
+\readlist\emails{\emails}
+\readlist\supervisors{\supervisors}
+
+
+
+% No indentation environment
+\newlength\mystoreparindent
+\newenvironment{noindentenv}{%
+  \setlength{\mystoreparindent}{\the\parindent}%
+  \setlength{\parindent}{0pt}%
+}{%
+  \setlength{\parindent}{\mystoreparindent}%
+}
+
+% Titlepage entry macros
+\newcommand{\tpentry}[2]{\textbf{#1:}\\#2\bigskip\par}
+\newcommand{\tpentryl}[2]{\textbf{#1:}\\#2}
+
+% The english titlepage
+\newcommand{\titlepageen}{%
+  \titlepaget%
+  {AAU_UK_STUDENTREPORT_blue_rgb}%
+  {\eduname}%
+  {Aalborg University}%
+  {Title}{\maintitle}%
+  {Subject}{\subject}%
+  {Project period}{\projectperiod}%
+  {Project group}%
+  {Participant(s)}%
+  {Supervisor(s)}%
+  {Pages}%
+  {Due date}%
+  {Abstract}%
+}
+
+% Titlepage template
+\newcommand{\titlepaget}[9]{%
+\neworrenewcommand{\titlepagett}[6]{%
+  \begin{multicols}{2}%
+    \includegraphics{figures/#1}% AAU logo
+    \columnbreak\\%
+    {\raggedleft%
+      \textbf{#2}\\% Education name
+      #3\\% AAU title
+      \href{https://www.aau.dk}{https://www.aau.dk}\\%
+    }%
+  \end{multicols}%
+  \begin{multicols}{2}%
+    \begin{noindentenv}%
+      \tpentry{#4}{#5}% Title
+      \tpentry{#6}{#7}% Semester theme
+      \tpentry{#8}{#9}% Project period
+      \tpentry{##1}{\projectgroup}% Project group
+      \tpentry{##2}{\authorlist}% Participants
+      \tpentry{##3}{\supervisorlist}% Supervisors
+      \tpentry{##4}{\pageref{lastpage}}% Pages
+      \tpentryl{##5}{\duedate}% Due date
+    \end{noindentenv}%
+    \columnbreak\\%
+    \textbf{##6:}% Abstract
+    \begin{mdframed}%
+      \input{formality/abstractcontent}% Abstract text
+    \end{mdframed}%
+  \end{multicols}%
+}%
+\titlepagett%
+}
+
+% Clickable email
+\newcommand{\emaillink}[1]{\href{mailto:#1}{#1}}
+
+% Preface signature macro
+\newcommand{\signature}[2]{%
+  \rule{\linewidth}{0.5pt}\\%
+  #1\\%
+  {\footnotesize <#2>}\\%
+}
+
+% Generate a list of authors
+\newcommand{\authorlist}{%
+  \foreachitem\authoritem\in\authors{%
+    \IfStrEq{\authoritem}{\authors[-1]}{\authoritem}{\authoritem\\}%
+  }%
+}
+
+% Replace æ,ø,å with ae,oe,aa as they are not supported in hyperref setup
+\newcommand\replacewithdigraph[1]{%
+  \patchcmd{#1}{æ}{ae}{}{}%
+  \patchcmd{#1}{ø}{oe}{}{}%
+  \patchcmd{#1}{å}{aa}{}{}%
+  \patchcmd{#1}{Æ}{Ae}{}{}%
+  \patchcmd{#1}{Ø}{Oe}{}{}%
+  \patchcmd{#1}{Å}{Aa}{}{}%
+}
+
+% Generate a comma seperated list of authors
+% For use in hyperref setup
+\def\authorcomma{}
+\newcommand\authoradd[1]{\edef\authorcomma{\authorcomma{}#1}}
+\foreachitem\authoritem\in\authors{%
+  \IfStrEq{\authoritem}{\authors[-1]}{%
+    \replacewithdigraph{\authoritem}%
+    \authoradd{\authoritem}%
+  }{%
+    \replacewithdigraph{\authoritem}%
+    \authoradd{\authoritem, }%
+  }%
+}
+
+% Generate a list of authors
+\newcommand{\authorsfrontpage}{}
+\foreachitem\authoritem\in\authors{%
+  \IfStrEq{\authoritem}{\authors[-1]}{
+    \eappto{\authorsfrontpage}{\authoritem}%
+  }{%
+    \eappto{\authorsfrontpage}{\authoritem}%
+    \appto{\authorsfrontpage}{\and}%
+  }%
+}
+
+\author{\authorsfrontpage}
+
+% Generate a list of supervisors
+\newcommand{\supervisorlist}{%
+  \foreachitem\supervisoritem\in\supervisors{%
+    \IfStrEq{\supervisoritem}{\supervisors[-1]}{\supervisoritem}{\supervisoritem\\}%
+  }%
+}
+
+
+% Generate the list of signatures on preface.tex
+\newcommand{\signaturelist}{%
+  \vspace{3\baselineskip}%
+  \foreachitem\signatureitem\in\authors{%
+    \ifthenelse{\isodd{\signatureitemcnt{}}}%
+      {%
+        \edef\oldsignatureitem{\signatureitem}%
+        \edef\oldsignatureitemcnt{\signatureitemcnt}%
+        \IfStrEq{\signatureitem}{\authors[-1]}{%
+          \begin{center}%
+            \signature{\signatureitem}{%
+              \foreachitem\emailitem\in\emails{%
+                \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
+              }%
+            }%
+          \end{center}%
+        }{}%
+      }%
+      {%
+        \begin{multicols}{2}%
+          \centering%
+           \signature{\oldsignatureitem}{%
+            \foreachitem\emailitem\in\emails{%
+              \IfStrEq{\emailitemcnt{}}{\oldsignatureitemcnt{}}{\emaillink\emailitem}{}%
+            }%
+          }%
+          \columnbreak%
+          \signature{\signatureitem}{%
+            \foreachitem\emailitem\in\emails{%
+              \IfStrEq{\emailitemcnt{}}{\signatureitemcnt{}}{\emaillink\emailitem}{}%
+            }%
+          }%
+        \end{multicols}%
+        \IfStrEq{\signatureitem}{\authors[-1]}{}{\vspace{1\baselineskip}}%
+      }%
+  }%
+}
+
+\newcommand{\langid}{en-US}
+
+\if\final0
+  \newcommand{\critical}[1]{\todo[color=red]{#1}}
+  \newcommand{\changeme}[1]{\todo[color=red!40]{#1}}
+  \newcommand{\unsure}[1]{\todo[color=orange!40]{#1}}
+  \newcommand{\info}[1]{\todo[color=blue!40]{#1}}
+  \newcommand{\nitpick}[1]{\todo[color=gray!40, size=\small{}]{#1}}
+  \newcommand{\missingref}[1]{\todo[color=green!40]{#1}}
+\else
+  \newcommand{\critical}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\changeme}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\unsure}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\info}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\nitpick}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\missingref}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\todo}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
+  \newcommand{\missingfigure}[1]{\PackageError{aau-report-template}{You have a missing figure}{Delete/fix your figure}}
+\fi

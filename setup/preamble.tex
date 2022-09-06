@@ -1,0 +1,124 @@
+% Set up the documentclass, packages and options
+
+% Set up user settings
+\input{setup/user.tex}
+
+% Has to be set before documentclass to silence warning
+\PassOptionsToPackage{pdfpagelabels=true}{hyperref}
+
+% Set up document to use a4 and use the report document class
+\if\final0
+  \documentclass[a4paper]{report}
+\else
+  \documentclass[a4paper, final]{report}
+\fi
+
+% subsubsections should have a number
+\setcounter{secnumdepth}{3}
+
+% Lists (this is where the fun begins)
+\usepackage{xstring}
+\usepackage{listofitems}
+
+
+% Set up encoding and font
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Has to be loaded before csquotes
+\usepackage{fvextra}
+
+% Set up language
+\usepackage{csquotes}
+\usepackage[english]{babel}
+
+% Geometry
+\usepackage{geometry}
+
+% Color
+\usepackage{xcolor}
+
+% Graphics
+\usepackage{graphicx}
+
+% Float used for figure[H]
+\usepackage{float}
+
+% Bibliography
+\usepackage[bibencoding=utf8]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Select section style
+\usepackage{titlesec}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\DeclareMathSymbol{*}{\mathbin}{symbols}{"01} % Makes the * symbol a times symbol in math mode
+
+% Header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Muticolumns
+\usepackage{multicol}
+
+% A box that just works
+\usepackage{mdframed}
+
+% Quotation
+\usepackage{dirtytalk}
+
+% If then else
+\usepackage{ifthen}
+
+% Advanced patching of macros
+\usepackage{xpatch}
+
+% Code highlighting
+\usepackage{minted}
+
+% Placeholder text
+\usepackage{lipsum}
+
+% Make things just fit in
+\usepackage[final, babel, nopatch=eqnum]{microtype}
+
+% Todo list
+\if\final0
+  \usepackage[english, colorinlistoftodos]{todonotes}
+\fi
+
+
+
+\title{\maintitle\\\large\subtitle}
+
+\input{setup/macro}
+
+\renewcommand{\listingscaption}{\listingname}
+
+
+% Clickable references and other pdf stuff
+% This should be the last package to be included
+\usepackage{hyperref}
+\hypersetup{%
+  plainpages=false,%
+  pdfauthor={\authorcomma},%
+  pdftitle={\maintitle{}: \subtitle},%
+  pdfsubject={\subject},%
+  pdflang={\langid},%
+  bookmarksnumbered=true,%
+  breaklinks,%
+  hidelinks,%
+  colorlinks=false,%
+  citecolor=black,%
+  filecolor=black,%
+  linkcolor=black,%
+  urlcolor=black,%
+  pdfstartview=FitH%
+}
+
+% Uncomment for no paragraph indentation and more space between paragraphs
+%\setlength{\parindent}{0}
+%\setlength{\parskip}{4mm}

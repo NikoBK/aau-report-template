@@ -1,0 +1,36 @@
+\input{setup/preamble}
+
+\begin{document}
+% Formal stuff like the frontpage and titlepage
+\pagestyle{empty}
+\include{formality/frontpage}
+\include{formality/titlepage}
+\include{formality/preface}
+\pdfbookmark[0]{\contentsname}{label:contents}
+\tableofcontents
+\clearpage
+\pagestyle{fancy}
+%
+% Todo notes
+\if\final0
+  \listoftodos
+\fi
+%
+% Content
+\include{sections/introduction}
+\include{sections/formulation}
+\include{sections/analysis}
+\include{sections/definition}
+\include{sections/code}
+%
+\printbibliography[heading=bibintoc]
+%
+% Appendix
+\label{lastpage}
+\pagestyle{empty}
+\assignpagestyle{\chapter}{empty}
+\appendix
+\addcontentsline{toc}{chapter}{\appendixname}
+%
+\include{appendix/appendix_1}
+\end{document}
