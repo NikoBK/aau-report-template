@@ -16,8 +16,6 @@
 \readlist\emails{\emails}
 \readlist\supervisors{\supervisors}
 
-
-
 % No indentation environment
 \newlength\mystoreparindent
 \newenvironment{noindentenv}{%
@@ -200,3 +198,6 @@
   \newcommand{\todo}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
   \newcommand{\missingfigure}[1]{\PackageError{aau-report-template}{You have a missing figure}{Delete/fix your figure}}
 \fi
+
+% Newline
+\newcommand{\n}{\vspace{1em}}
