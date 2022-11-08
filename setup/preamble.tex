@@ -34,7 +34,15 @@
 \usepackage[english]{babel}
 
 % Geometry
-\usepackage{geometry}
+\usepackage[left=25mm, right=25mm]{geometry}
+
+% Change the vertical space above chapter titles
+% NOTE: The following code sets the vertical space to 60 less than
+% the default chapter title top space.
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-60pt}{40pt}
 
 % Color
 \usepackage{xcolor}
