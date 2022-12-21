@@ -1,5 +1,13 @@
 \pdfbookmark[0]{Front page}{label:frontpage}
 
+\if\flipcolors 0
+    \def\backgroundcolor{white}
+    \def\fontcolor{aaublue}
+\else
+    \def\backgroundcolor{aaublue}
+    \def\fontcolor{white}
+\fi
+
 \begin{titlepage}
     \newgeometry{top=0cm, bottom=1.2cm, right=0cm, left=0cm}
     
@@ -20,9 +28,9 @@
     \vspace*{-0.96cm}
     {
         \noindent
-        \color{aaublue}
+        \color{\fontcolor}
         \fboxsep0pt
-        \colorbox{white}
+        \colorbox{\backgroundcolor}
         {
             \begin{tabular}{@{}p{\paperwidth}@{}}
             
