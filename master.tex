@@ -3,7 +3,13 @@
 \begin{document}
 % Formal stuff like the frontpage and titlepage
 \pagestyle{empty}
-\include{sections/formality/frontpageImage}
+
+\if\fpageimg0
+    \include{sections/formality/frontpage}
+\else
+    \include{sections/formality/frontpageImage}
+\fi
+
 \include{sections/formality/titlepage}
 \include{sections/formality/preface}
 \pdfbookmark[0]{\contentsname}{label:contents}
