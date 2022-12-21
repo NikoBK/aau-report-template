@@ -5,9 +5,13 @@
 \pagestyle{empty}
 
 \if\fpageimg0
-    \include{sections/formality/frontpage}
+    \include{sections/formality/frontpageSimple}
 \else
-    \include{sections/formality/frontpageImage}
+    \if\fpageimg1
+        \include{sections/formality/frontpageImageSimple}
+    \else
+        \include{sections/formality/frontpageImageFancy}
+    \fi
 \fi
 
 \include{sections/formality/titlepage}
