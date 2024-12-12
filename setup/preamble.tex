@@ -16,6 +16,9 @@
 % subsubsections should have a number
 \setcounter{secnumdepth}{3}
 
+% https://daniel-j-h.github.io/post/latex-a-modern-approach/
+\usepackage[l2tabu,orthodox]{nag}
+
 % Lists (this is where the fun begins)
 \usepackage{xstring}
 \usepackage{listofitems}
@@ -30,7 +33,7 @@
 \usepackage{fvextra}
 
 % Set up language
-\usepackage{csquotes}
+\usepackage[strict=true]{csquotes}
 \if\useenglish0
   \usepackage[danish]{babel}
 \else
@@ -50,13 +53,14 @@
 \usepackage{float}
 
 % Bibliography
-\usepackage[bibencoding=utf8]{biblatex}
+\usepackage[bibencoding=utf8, safeinputenc, bibwarn=true]{biblatex}
 \addbibresource{bibliography.bib}
 
 % Select section style
 \usepackage{titlesec}
 
 % Math
+\usepackage[all,error]{onlyamsmath}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \DeclareMathSymbol{*}{\mathbin}{symbols}{"01} % Makes the * symbol a times symbol in math mode
@@ -64,6 +68,9 @@
 % Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+
+% Nice tables
+\usepackage{booktabs}
 
 % Muticolumns
 \usepackage{multicol}
