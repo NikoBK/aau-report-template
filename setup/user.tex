@@ -1,8 +1,14 @@
 % Change this to 1 before you compile your final report
 \def\final{0}
 
-% If 0 the document uses danish language, if 1 the document uses english
-\def\useenglish{0}
+% NOTE: This only works for the fancy frontpage.
+% This toggles the colors on the frontpage.
+% 0 = White background, blue frontpage text.
+% 1 = Blue background, white frontpage text.
+\def\flipcolors{0}
+
+% Change this to 1 if this report is your master's or bachelor project
+\def\masterproject{0}
 
 % Date
 \date{\today}
@@ -12,7 +18,7 @@
   Author 1,%
   Author 2,%
   Author 3,%
-  Ultra langt navn som der ikke kan stå på en linje,%
+  Super long name that cannot stand alone on it's own line,%
   Author 5,%
   Author 6,%
   Author 7,%
@@ -31,34 +37,32 @@
   user8@student.aau.dk%
 }
 
-
+% Your group's supervisor(s).
 \newcommand{\supervisors}{%
   Supervisor 1,%
   Supervisor 2%
 }
 
-
-
 % Document properties
 
 % Title
-\newcommand{\maintitle}{Skriv titel her}
+\newcommand{\maintitle}{Project title}
 
 
 % Subtitle
-\newcommand{\subtitle}{Undertitel her}
+\newcommand{\subtitle}{Project subtitle}
 
 
 % Subject
-\newcommand{\subject}{Emne her}
+\newcommand{\subject}{Subject}
 
 
 % Project period
-\newcommand{\projectperiod}{Efterårssemesteret 2020}
+\newcommand{\projectperiod}{Winter Semester 1970}
 
 
 % Project group
-\newcommand{\projectgroup}{a400}
+\newcommand{\projectgroup}{a123}
 
 
 % Due date
@@ -66,4 +70,4 @@
 
 
 % Name of education
-\newcommand{\eduname}{Software}
+\newcommand{\eduname}{Education Name}

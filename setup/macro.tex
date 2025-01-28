@@ -1,22 +1,3 @@
-% Define built in chapters to respect danish/english setting
-\if\useenglish0
-  \newcommand{\prefacename}{Forord}
-  \newcommand{\introductionname}{Indledning}
-  \newcommand{\analysisname}{Problemanalyse}
-  \newcommand{\definitionname}{Problemafgrænsning}
-  \newcommand{\formulationname}{Problemformulering}
-  \newcommand{\solutionname}{Løsning}
-  \newcommand{\listingname}{Kodeuddrag}
-\else
-  \newcommand{\prefacename}{Preface}
-  \newcommand{\introductionname}{Introduction}
-  \newcommand{\analysisname}{Problem analysis}
-  \newcommand{\definitionname}{Definition of the problem}
-  \newcommand{\formulationname}{Formulation of the problem}
-  \newcommand{\solutionname}{Solution}
-  \newcommand{\listingname}{Code snippet}
-\fi
-
 % newcommand/renewcommand convenience function
 \newcommand{\neworrenewcommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
 
@@ -26,10 +7,8 @@
 \readlist\emails{\emails}
 \readlist\supervisors{\supervisors}
 
-
-
 % No indentation environment
-\newlength\mystoreparindent%
+\newlength\mystoreparindent
 \newenvironment{noindentenv}{%
   \setlength{\mystoreparindent}{\the\parindent}%
   \setlength{\parindent}{0pt}%
@@ -41,25 +20,8 @@
 \newcommand{\tpentry}[2]{\textbf{#1:}\\#2\bigskip\par}
 \newcommand{\tpentryl}[2]{\textbf{#1:}\\#2}
 
-% The danish titlepage
-\newcommand{\titlepageda}{%
-  \titlepaget%
-  {AAU_STUDENTERRAPPORT_blue_rgb}%
-  {\eduname}%
-  {Aalborg Universitet}%
-  {Titel}{\maintitle}%
-  {Emne}{\subject}%
-  {Projektperiode}{\projectperiod}%
-  {Projektgruppe}%
-  {Deltager(e)}%
-  {Vejleder(e)}%
-  {Sidetal}%
-  {Afleveringsdato}%
-  {Synopse}%
-}
-
 % The english titlepage
-\newcommand{\titlepageen}{%
+\newcommand{\maketitlepage}{%
   \titlepaget%
   {AAU_UK_STUDENTREPORT_blue_rgb}%
   {\eduname}%
@@ -79,7 +41,7 @@
 \newcommand{\titlepaget}[9]{%
 \neworrenewcommand{\titlepagett}[6]{%
   \begin{multicols}{2}%
-    \includegraphics{figures/#1}% AAU logo
+    \includegraphics{figures/formality/#1}% AAU logo
     \columnbreak\\%
     {\raggedleft%
       \textbf{#2}\\% Education name
@@ -101,7 +63,7 @@
     \columnbreak\\%
     \textbf{##6:}% Abstract
     \begin{mdframed}%
-      \input{formalia/abstract}% Abstract text
+      \input{sections/formality/abstract}% Abstract text
     \end{mdframed}%
   \end{multicols}%
 }%
@@ -208,26 +170,7 @@
   }%
 }
 
-\if\useenglish0
-  \newcommand{\langid}{da-DK}
-\else
-  \newcommand{\langid}{en-US}
-\fi
+\newcommand{\langid}{en-US}
 
-\if\final0
-  \newcommand{\critical}[1]{\todo[color=red]{#1}}
-  \newcommand{\changeme}[1]{\todo[color=red!40]{#1}}
-  \newcommand{\unsure}[1]{\todo[color=orange!40]{#1}}
-  \newcommand{\info}[1]{\todo[color=blue!40]{#1}}
-  \newcommand{\nitpick}[1]{\todo[color=gray!40, size=\small{}]{#1}}
-  \newcommand{\missingref}[1]{\todo[color=green!40]{#1}}
-\else
-  \newcommand{\critical}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\changeme}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\unsure}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\info}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\nitpick}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\missingref}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\todo}[1]{\PackageError{aau-report-template}{You have todos in final mode}{Delete/fix your todos}}
-  \newcommand{\missingfigure}[1]{\PackageError{aau-report-template}{You have a missing figure}{Delete/fix your figure}}
-\fi
+% Newline
+\newcommand{\n}{\vspace{1em}}

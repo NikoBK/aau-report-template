@@ -1,0 +1,107 @@
+\pdfbookmark[0]{Front page}{label:frontpage}
+
+\if\flipcolors 0
+    \def\backgroundcolor{white}
+    \def\fontcolor{aaublue}
+\else
+    \def\backgroundcolor{aaublue}
+    \def\fontcolor{white}
+\fi
+
+\begin{titlepage}
+    \newgeometry{top=0cm, bottom=1.2cm, right=0cm, left=0cm}
+    
+    % Create the AAU waves background.
+    \backgroundsetup{
+        scale = 1.1,
+        angle = 0,
+        opacity = 1.0,
+        contents = {\includegraphics[width=\paperwidth,height=\paperheight]{figures/formality/aau_waves}}
+    }
+    
+    % Create the background image that docks at the top of the page.
+    \begin{center}
+    % Should not be changed!
+    \centerline{\includegraphics[totalheight=0.5\paperwidth,width=1\paperwidth]{figures/formality/frontpageImage.jpg}}
+    \end{center}
+
+    % This vertical space can be changed to offset the project title from the background image.
+    \vspace*{-0.96cm}
+    {
+        \noindent
+        \color{\fontcolor}
+        \fboxsep0pt
+        \colorbox{\backgroundcolor}
+        {
+            \begin{tabular}{@{}p{0.9889999\paperwidth}@{}}
+            
+            % Make the project title
+            \centerline
+            {
+                \begin{minipage}{0.85\textwidth}
+                    \bigskip
+    		        \bigskip
+                    \centering
+                    \Huge{\textbf{\maintitle}}
+                \end{minipage}
+            }
+		
+		    % Make the project subtitle
+	        \centerline
+	        {
+    	        \begin{minipage}{0.9\textwidth}
+                    \bigskip
+                    \centering
+                    \Large{\subtitle}
+                \end{minipage}
+            }
+			
+			% Make the list of authors
+        	\centerline
+        	{
+            	\begin{minipage}{0.9\textwidth}
+                    \bigskip
+                    \centering
+                    {\Large \authors[]}
+                \end{minipage}
+            }
+			
+			% Make institute/education name and year.
+            \centerline
+            {
+                \begin{minipage}{0.9\textwidth}
+                    \bigskip
+                    \centering
+                    {\large \eduname, \the\year } 
+                \end{minipage}
+            }
+			
+			% The following code is only iterated if the template is set
+			% to master mode in user.tex
+            \if\masterproject1
+                % Make the master's text.
+                \centerline
+                {
+                    \begin{minipage}{0.9\textwidth}
+                        \bigskip
+                        \centering
+                        {\Large Master's Project }
+                        \smallskip
+                    \end{minipage}
+                }
+            \fi
+			
+            \end{tabular}
+        }
+    }
+
+  \vfill
+  \begin{figure}[!b]
+	\centering
+    \includegraphics[width=0.2\paperwidth]{figures/formality/aau_logo_circle_en}
+  \end{figure}
+\end{titlepage}
+\restoregeometry
+
+% This needs to be here to prevent all other pages from having the aau waves background!
+\backgroundsetup{contents={}}

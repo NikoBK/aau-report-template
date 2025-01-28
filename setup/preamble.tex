@@ -16,9 +16,6 @@
 % subsubsections should have a number
 \setcounter{secnumdepth}{3}
 
-% https://daniel-j-h.github.io/post/latex-a-modern-approach/
-\usepackage[l2tabu,orthodox]{nag}
-
 % Lists (this is where the fun begins)
 \usepackage{xstring}
 \usepackage{listofitems}
@@ -33,18 +30,24 @@
 \usepackage{fvextra}
 
 % Set up language
-\usepackage[strict=true]{csquotes}
-\if\useenglish0
-  \usepackage[danish]{babel}
-\else
-  \usepackage[english]{babel}
-\fi
+\usepackage{csquotes}
+\usepackage[english]{babel}
 
 % Geometry
-\usepackage{geometry}
+\usepackage[left=25mm, right=25mm]{geometry}
+
+% Change the vertical space above chapter titles
+% NOTE: The following code sets the vertical space to 60 less than
+% the default chapter title top space.
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-60pt}{40pt}
 
 % Color
 \usepackage{xcolor}
+% A dark blue color, defined using the xcolor package.
+\definecolor{aaublue}{RGB}{33,26,82}
 
 % Graphics
 \usepackage{graphicx}
@@ -53,14 +56,13 @@
 \usepackage{float}
 
 % Bibliography
-\usepackage[bibencoding=utf8, safeinputenc, bibwarn=true]{biblatex}
+\usepackage[bibencoding=utf8]{biblatex}
 \addbibresource{bibliography.bib}
 
 % Select section style
 \usepackage{titlesec}
 
 % Math
-\usepackage[all,error]{onlyamsmath}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \DeclareMathSymbol{*}{\mathbin}{symbols}{"01} % Makes the * symbol a times symbol in math mode
@@ -68,9 +70,6 @@
 % Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-
-% Nice tables
-\usepackage{booktabs}
 
 % Muticolumns
 \usepackage{multicol}
@@ -94,24 +93,14 @@
 \usepackage{lipsum}
 
 % Make things just fit in
-\usepackage[final, babel]{microtype}
-
-% Todo list
-\if\final0
-  \if\useenglish0
-    \usepackage[danish, colorinlistoftodos]{todonotes}
-  \else
-    \usepackage[english, colorinlistoftodos]{todonotes}
-  \fi
-\fi
-
-
+\usepackage[final, babel, nopatch=eqnum]{microtype}
 
 \title{\maintitle\\\large\subtitle}
 
 \input{setup/macro}
 
-\renewcommand{\listingscaption}{\listingname}
+% Caption text, exclusive for code snippets.
+\renewcommand{\listingscaption}{Code snippet}
 
 
 % Clickable references and other pdf stuff
@@ -137,3 +126,8 @@
 % Uncomment for no paragraph indentation and more space between paragraphs
 %\setlength{\parindent}{0}
 %\setlength{\parskip}{4mm}
+
+\usepackage{silence}
+\WarningsOff[everypage]% Suppress warnings related to package everypage
+% Adds support for full page background picture
+\usepackage[contents={},color=gray]{background}

@@ -3,25 +3,19 @@
 \begin{document}
 % Formal stuff like the frontpage and titlepage
 \pagestyle{empty}
-\include{formalia/frontpage}
-\include{formalia/titlepage}
-\include{formalia/preface}
+\include{sections/formality/frontpage}
+\include{sections/formality/titlepage}
+\include{sections/formality/preface}
 \pdfbookmark[0]{\contentsname}{label:contents}
 \tableofcontents
 \clearpage
 \pagestyle{fancy}
 %
-% Todo notes
-\if\final0
-  \listoftodos
-\fi
-%
 % Content
 \include{sections/introduction}
-\include{sections/analysis}
-\include{sections/definition}
 \include{sections/formulation}
-\include{sections/solution}
+\include{sections/analysis}
+\include{sections/code}
 %
 \printbibliography[heading=bibintoc]
 %
